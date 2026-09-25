@@ -38,7 +38,8 @@
       <h2 class="text-xl font-bold text-gray-900 mb-3">1. Data yang Kami Kumpulkan</h2>
       <ul class="list-disc list-inside space-y-2 text-sm">
         <li><strong>Data yang Anda kirim lewat formulir kontak:</strong> nama, nomor WhatsApp, pilihan outlet, kategori produk, dan isi pesan. Data ini <strong>tidak disimpan di server</strong> — pesan dikirim langsung ke WhatsApp outlet yang Anda pilih.</li>
-        <li><strong>Data kunjungan (statistik, anonim):</strong> via Google Analytics (gtag.js / Measurement ID <code class="bg-gray-100 px-1 rounded">G-N42Q7Z749M</code>) — halaman yang dikunjungi, perangkat, perkiraan lokasi, klik pada tombol WhatsApp/Shopee, dan submit formulir.</li>
+        <li><strong>Isi keranjang (hanya di perangkat Anda):</strong> produk dan jumlah yang Anda pilih di keranjang disimpan di penyimpanan lokal browser (<code class="bg-gray-100 px-1 rounded">localStorage</code>). Data ini <strong>tidak dikirim ke server kami</strong> dan otomatis terhapus bila Anda menghapus keranjang atau mengosongkan penyimpanan situs pada browser.</li>
+        <li><strong>Data kunjungan (statistik, anonim):</strong> via Google Analytics (gtag.js / Measurement ID <code class="bg-gray-100 px-1 rounded">G-N42Q7Z749M</code>) — halaman yang dikunjungi, perangkat, perkiraan lokasi, klik pada tombol WhatsApp/Shopee, produk yang ditambahkan ke keranjang, dan submit formulir.</li>
       </ul>
     </section>
 
@@ -64,8 +65,10 @@
       <h2 class="text-xl font-bold text-gray-900 mb-3">4. Cookie</h2>
       <p class="text-sm">
         Situs ini menggunakan cookie dari Google Analytics (cookie <code class="bg-gray-100 px-1 rounded">_ga</code>,
-        <code class="bg-gray-100 px-1 rounded">_gid</code>) untuk membedakan pengunjung. Anda dapat menolak cookie lewat
-        pengaturan browser kapan saja tanpa mengganggu fungsi situs.
+        <code class="bg-gray-100 px-1 rounded">_gid</code>) untuk membedakan pengunjung. Selain itu, keranjang memakai
+        penyimpanan lokal browser (<code class="bg-gray-100 px-1 rounded">localStorage</code>), bukan cookie, dan hanya
+        berisi pilihan produk Anda. Anda dapat menolak cookie lewat pengaturan browser kapan saja tanpa mengganggu
+        fungsi situs.
       </p>
     </section>
 
