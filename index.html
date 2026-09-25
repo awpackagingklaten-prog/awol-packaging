@@ -141,6 +141,7 @@
   <link rel="preconnect" href="https://wa.me" crossorigin />
   <link rel="dns-prefetch" href="https://wa.me" />
   <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="preload" as="image" href="backgroud-600.webp" imagesrcset="backgroud-600.webp 600w, backgroud.webp 900w" imagesizes="(min-width: 1024px) 45vw, 100vw" fetchpriority="high" type="image/webp" />
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-N42Q7Z749M"></script>
   <script>
@@ -275,7 +276,11 @@
           </div>
         </div>
         <div class="block">
-          <img src="backgroud.png" alt="Gambar background kategori produk packaging" class="w-full h-auto scale-110" loading="lazy" decoding="async" />
+          <picture>
+            <source srcset="backgroud-600.webp 600w, backgroud.webp 900w" sizes="(min-width: 1024px) 45vw, 100vw" type="image/webp" />
+            <source srcset="backgroud-600.png 600w, backgroud.png 900w" sizes="(min-width: 1024px) 45vw, 100vw" type="image/png" />
+            <img src="backgroud.png" alt="Gambar background kategori produk packaging" class="w-full h-auto scale-110" decoding="async" fetchpriority="high" />
+          </picture>
         </div>
       </div>
     </div>
