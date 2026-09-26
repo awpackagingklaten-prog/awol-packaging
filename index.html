@@ -151,7 +151,7 @@
     gtag('config', 'G-N42Q7Z749M');
   </script>
 </head>
-<body class="font-sans text-gray-800 antialiased" data-cart-fab="left">
+<body class="font-sans text-gray-800 antialiased" data-cart-fab="right">
 
   <!-- NAVBAR -->
   <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300">
@@ -183,10 +183,6 @@
         <a href="#tentang" class="hover:text-brand-600 transition">Tentang</a>
         <a href="#kontak" class="hover:text-brand-600 transition">Kontak</a>
       </div>
-      <button class="cart-trigger relative inline-flex items-center justify-center w-10 h-10 rounded-full text-gray-600 hover:text-brand-600 hover:bg-brand-50 transition" aria-label="Buka keranjang" title="Keranjang">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 4.6A1 1 0 004.6 19H19a2 2 0 002-2v-3"/></svg>
-        <span class="cart-badge hidden absolute -top-0.5 -right-0.5 min-w-[20px] h-5 px-1 rounded-full bg-brand-600 text-white text-[11px] font-bold items-center justify-center">0</span>
-      </button>
       <div class="relative">
         <button id="wa-btn"
                 class="hidden sm:inline-flex items-center gap-2 bg-brand-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-brand-700 transition shadow-lg shadow-brand-600/25">
@@ -241,7 +237,6 @@
         <a href="#keunggulan" class="block py-2 text-gray-700 hover:text-brand-600">Keunggulan</a>
         <a href="#tentang" class="block py-2 text-gray-700 hover:text-brand-600">Tentang</a>
         <a href="#kontak" class="block py-2 text-gray-700 hover:text-brand-600">Kontak</a>
-        <button class="cart-trigger block py-2 text-left text-gray-700 hover:text-brand-600">Keranjang</button>
         <a href="https://wa.me/628211395050" target="_blank" class="block py-2 text-brand-600 font-semibold">WhatsApp</a>
       </div>
     </div>
@@ -752,40 +747,6 @@
     </div>
   </footer>
 
-  <!-- FLOATING WHATSAPP BUTTON + POPUP OUTLET -->
-  <div id="float-wa-wrap" class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
-    <!-- Popup pilih outlet -->
-    <div id="float-wa-popup" class="hidden w-72 bg-white rounded-2xl shadow-xl border border-gray-100 p-3">
-      <p class="text-xs font-bold text-gray-400 uppercase tracking-wide px-2 pb-2">Pilih Outlet</p>
-      <div class="space-y-1">
-        <a href="https://wa.me/6285156338939?text=Halo%20AWOL%20Packaging%20Yogyakarta" target="_blank" class="flex items-center gap-3 p-2 rounded-xl hover:bg-brand-50 transition">
-          <img src="logo-awol-packaging-yogyakarta.png" alt="AWOL Yogyakarta" class="w-9 h-9 rounded-full object-contain bg-gray-200 p-0.5 shrink-0" />
-          <span class="text-sm font-semibold text-gray-800">AWOL Packaging</span>
-          <span class="ml-auto text-xs text-gray-400">Yogyakarta</span>
-        </a>
-        <a href="https://wa.me/62895400927385?text=Halo%20AWOL%20Packaging%20Sleman" target="_blank" class="flex items-center gap-3 p-2 rounded-xl hover:bg-brand-50 transition">
-          <img src="logo-awol-packaging-sleman.png" alt="AWOL Sleman" class="w-9 h-9 rounded-full object-contain bg-gray-200 p-0.5 shrink-0" />
-          <span class="text-sm font-semibold text-gray-800">AWOL Packaging</span>
-          <span class="ml-auto text-xs text-gray-400">Sleman</span>
-        </a>
-        <a href="https://wa.me/628998000502?text=Halo%20Adi%20Wijaya%20Packaging%20Klaten" target="_blank" class="flex items-center gap-3 p-2 rounded-xl hover:bg-brand-50 transition">
-          <img src="logo-adi-wijaya-packaging-klaten.png" alt="ADI WIJAYA Klaten" class="w-9 h-9 rounded-full object-contain bg-gray-200 p-0.5 shrink-0" />
-          <span class="text-sm font-semibold text-gray-800">ADI WIJAYA Packaging</span>
-          <span class="ml-auto text-xs text-gray-400">Klaten</span>
-        </a>
-        <a href="https://wa.me/6281220408070?text=Halo%20Asia%20Lestari%20Packaging%20Madiun" target="_blank" class="flex items-center gap-3 p-2 rounded-xl hover:bg-brand-50 transition">
-          <img src="logo-asia-lestari.png" alt="ASIA LESTARI Madiun" class="w-9 h-9 rounded-full object-contain bg-gray-200 p-0.5 shrink-0" />
-          <span class="text-sm font-semibold text-gray-800">ASIA LESTARI Packaging</span>
-          <span class="ml-auto text-xs text-gray-400">Madiun</span>
-        </a>
-      </div>
-    </div>
-    <button id="float-wa-btn"
-            class="bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-green-500/30 hover:bg-green-600 transition hover:scale-110" aria-label="WhatsApp">
-      <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.613.613l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.319 0-4.478-.665-6.32-1.81l-.44-.27-2.633.878.878-2.633-.27-.44A9.965 9.965 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
-    </button>
-  </div>
-
   <script src="assets/js/products.js"></script>
   <script src="assets/js/cart.js"></script>
   <script>
@@ -821,19 +782,9 @@
       kategoriDropdown.classList.toggle('hidden');
     });
 
-    // Toggle popup pilih outlet (tombol WA melayang)
-    const floatBtn = document.getElementById('float-wa-btn');
-    const floatPopup = document.getElementById('float-wa-popup');
-    floatBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      floatPopup.classList.toggle('hidden');
-    });
-
     // Tutup saat klik di luar
     document.addEventListener('click', (e) => {
       if (!e.target.closest('#wa-btn') && !e.target.closest('#wa-dropdown')) waDropdown.classList.add('hidden');
-      if (!e.target.closest('#float-wa-btn') && !e.target.closest('#float-wa-popup')) floatPopup.classList.add('hidden');
       if (!e.target.closest('#kategori-btn') && !e.target.closest('#kategori-dropdown')) kategoriDropdown.classList.add('hidden');
     });
 
