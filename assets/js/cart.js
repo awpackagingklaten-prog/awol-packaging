@@ -18,11 +18,21 @@ const OUTLET_PILIHAN = [
 const PRODUCT_BY_ID = {};
 PRODUCTS.forEach((p) => { PRODUCT_BY_ID[p.image.replace(/\.[^.]+$/, '')] = p; });
 
+// Kartu produk unggulan di beranda (index.html) berisi kategori, bukan varian katalog,
+// jadi tidak ada di PRODUCTS. Supaya tetap bisa dimasukkan ke keranjang, daftarkan di sini.
+const KATEGORI_BY_ID = {
+  'kardus-kategori': { image: 'kardus-box.jpg', name: 'Kardus (berbagai varian)', price: 'Mulai Rp 900/pcs' },
+  'lakban-kategori': { image: 'lakban-OPP.jpg', name: 'Lakban (berbagai varian)', price: 'Mulai Rp 1.500/roll' },
+  'bubble-kategori': { image: 'bubble-mailer.jpg', name: 'Bubble Wrap (berbagai varian)', price: 'Mulai Rp 650/pcs' },
+};
+
+const produkById = (id) => PRODUCT_BY_ID[id] || KATEGORI_BY_ID[id] || null;
+
 const cartRead = (k, fb) => { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : fb; } catch (e) { return fb; } };
 const cartWrite = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
 
 // Hanya id + qty yang disimpan; nama & harga selalu diambil dari PRODUCTS (selalu sinkron)
-let cart = cartRead(CART_KEY, []).filter((it) => PRODUCT_BY_ID[it.id]);
+let cart = cartRead(CART_KEY, []).filter((it) => produkById(it.id));
 let cartOutlet = cartRead(CART_OUTLET_KEY, '');
 let pemesan = Object.assign({ nama: '', wa: '', alamat: '' }, cartRead(CART_PEMESAN_KEY, {}));
 
@@ -33,7 +43,7 @@ const hargaAngka = (harga) => {
 const hargaSatuan = (harga) => (String(harga).split('/')[1] || '').trim();
 const rupiah = (n) => 'Rp ' + Math.round(n).toLocaleString('id-ID');
 const totalItem = () => cart.reduce((t, it) => t + it.qty, 0);
-const totalSub = () => cart.reduce((t, it) => t + hargaAngka(PRODUCT_BY_ID[it.id].price) * it.qty, 0);
+const totalSub = () => cart.reduce((t, it) => t + hargaAngka(produkById(it.id).price) * it.qty, 0);
 // Harga varian tanpa angka (mis. "Hubungi Kami") tetap ditampilkan apa adanya
 const labelHarga = (harga) => (hargaAngka(harga) ? rupiah(hargaAngka(harga)) : harga);
 const labelSubtotal = () => (totalSub() > 0 ? rupiah(totalSub()) : 'Sesuai konfirmasi outlet');
@@ -145,7 +155,7 @@ function renderCart() {
 
   cartList.innerHTML = cart.length
     ? cart.map((it) => {
-        const p = PRODUCT_BY_ID[it.id];
+        const p = produkById(it.id);
         return `
         <div class="flex gap-3 py-3 border-b border-gray-100">
           <img src="${p.image}" alt="${p.name}" class="w-14 h-14 rounded-xl object-cover shrink-0" />
@@ -194,12 +204,13 @@ function renderCart() {
 }
 
 function addToCart(id) {
+  const p = produkById(id);
+  if (!p) return;
   const item = cart.find((it) => it.id === id);
   if (item) item.qty = Math.min(9999, item.qty + 1);
   else cart.push({ id: id, qty: 1 });
   cartWrite(CART_KEY, cart);
   renderCart();
-  const p = PRODUCT_BY_ID[id];
   gtag('event', 'add_to_cart', {
     currency: 'IDR',
     value: hargaAngka(p.price),
@@ -316,7 +327,7 @@ cartSend.addEventListener('click', () => {
     return;
   }
   const baris = cart.map((it, i) => {
-    const p = PRODUCT_BY_ID[it.id];
+    const p = produkById(it.id);
     const sat = hargaSatuan(p.price);
     return `${i + 1}. ${p.name} x ${it.qty}${sat ? ' ' + sat : ''} @ ${labelHarga(p.price)}${sat ? '/' + sat : ''}`;
   });
