@@ -216,6 +216,13 @@ function addToCart(id) {
     value: hargaAngka(p.price),
     items: [{ item_id: id, item_name: p.name, price: hargaAngka(p.price), quantity: 1 }],
   });
+  fbq('track', 'AddToCart', {
+    content_ids: [id],
+    content_name: p.name,
+    content_type: 'product',
+    currency: 'IDR',
+    value: hargaAngka(p.price),
+  });
   toast(p.name + ' masuk keranjang');
 }
 
@@ -227,8 +234,25 @@ function updateQty(id, delta) {
   renderCart();
 }
 
+// InitiateCheckout (Meta Pixel) dikirim sekali per kombinasi isi keranjang supaya tidak duplikat saat panel dibuka berulang
+let checkoutTracked = '';
+function trackInitiateCheckout() {
+  if (!cart.length) return;
+  const sig = cart.map((it) => it.id + 'x' + it.qty).join(',');
+  if (sig === checkoutTracked) return;
+  checkoutTracked = sig;
+  fbq('track', 'InitiateCheckout', {
+    content_ids: cart.map((it) => it.id),
+    content_type: 'product',
+    currency: 'IDR',
+    value: totalSub(),
+    num_items: totalItem(),
+  });
+}
+
 function openCart() {
   renderCart();
+  trackInitiateCheckout();
   cartOverlay.classList.remove('hidden');
   cartPanel.classList.remove('hidden');
   document.body.classList.add('overflow-hidden');
@@ -311,6 +335,7 @@ cartOutlets.addEventListener('click', (e) => {
 cartClear.addEventListener('click', () => {
   cart = [];
   cartWrite(CART_KEY, cart);
+  checkoutTracked = '';
   renderCart();
 });
 
