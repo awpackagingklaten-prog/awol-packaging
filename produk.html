@@ -214,22 +214,22 @@
         <div id="wa-dropdown" class="hidden absolute right-0 top-full mt-3 w-72 bg-white rounded-2xl shadow-xl border border-gray-100 p-3 z-50">
           <p class="text-xs font-bold text-gray-400 uppercase tracking-wide px-2 pb-2">Pilih Outlet</p>
           <div class="space-y-1">
-            <a href="https://wa.me/6285156338939?text=Halo%20AWOL%20Packaging%20Yogyakarta" target="_blank" class="flex items-center gap-3 p-2 rounded-xl hover:bg-brand-50 transition">
+            <a href="https://wa.me/6285156338939?text=Halo%20AWOL%20Packaging%20Yogyakarta" data-wa-src="nav_dropdown_yogyakarta" target="_blank" class="flex items-center gap-3 p-2 rounded-xl hover:bg-brand-50 transition">
               <img src="logo-awol-packaging-yogyakarta.png" alt="AWOL Yogyakarta" class="w-9 h-9 rounded-full object-contain bg-gray-200 p-0.5 shrink-0" />
               <span class="text-sm font-semibold text-gray-800">AWOL Packaging</span>
               <span class="ml-auto text-xs text-gray-400">Yogyakarta</span>
             </a>
-            <a href="https://wa.me/62895400927385?text=Halo%20AWOL%20Packaging%20Sleman" target="_blank" class="flex items-center gap-3 p-2 rounded-xl hover:bg-brand-50 transition">
+            <a href="https://wa.me/62895400927385?text=Halo%20AWOL%20Packaging%20Sleman" data-wa-src="nav_dropdown_sleman" target="_blank" class="flex items-center gap-3 p-2 rounded-xl hover:bg-brand-50 transition">
               <img src="logo-awol-packaging-sleman.png" alt="AWOL Sleman" class="w-9 h-9 rounded-full object-contain bg-gray-200 p-0.5 shrink-0" />
               <span class="text-sm font-semibold text-gray-800">AWOL Packaging</span>
               <span class="ml-auto text-xs text-gray-400">Sleman</span>
             </a>
-            <a href="https://wa.me/628998000502?text=Halo%20Adi%20Wijaya%20Packaging%20Klaten" target="_blank" class="flex items-center gap-3 p-2 rounded-xl hover:bg-brand-50 transition">
+            <a href="https://wa.me/628998000502?text=Halo%20Adi%20Wijaya%20Packaging%20Klaten" data-wa-src="nav_dropdown_klaten" target="_blank" class="flex items-center gap-3 p-2 rounded-xl hover:bg-brand-50 transition">
               <img src="logo-adi-wijaya-packaging-klaten.png" alt="ADI WIJAYA Klaten" class="w-9 h-9 rounded-full object-contain bg-gray-200 p-0.5 shrink-0" />
               <span class="text-sm font-semibold text-gray-800">ADI WIJAYA Packaging</span>
               <span class="ml-auto text-xs text-gray-400">Klaten</span>
             </a>
-            <a href="https://wa.me/6281220408070?text=Halo%20Asia%20Lestari%20Packaging%20Madiun" target="_blank" class="flex items-center gap-3 p-2 rounded-xl hover:bg-brand-50 transition">
+            <a href="https://wa.me/6281220408070?text=Halo%20Asia%20Lestari%20Packaging%20Madiun" data-wa-src="nav_dropdown_madiun" target="_blank" class="flex items-center gap-3 p-2 rounded-xl hover:bg-brand-50 transition">
               <img src="logo-asia-lestari.png" alt="ASIA LESTARI Madiun" class="w-9 h-9 rounded-full object-contain bg-gray-200 p-0.5 shrink-0" />
               <span class="text-sm font-semibold text-gray-800">ASIA LESTARI Packaging</span>
               <span class="ml-auto text-xs text-gray-400">Madiun</span>
@@ -258,7 +258,7 @@
         <a href="index.html#keunggulan" class="block py-2 text-gray-700 hover:text-brand-600">Keunggulan</a>
         <a href="index.html#tentang" class="block py-2 text-gray-700 hover:text-brand-600">Tentang</a>
         <a href="index.html#kontak" class="block py-2 text-gray-700 hover:text-brand-600">Kontak</a>
-        <a href="https://wa.me/628211395050" target="_blank" class="block py-2 text-brand-600 font-semibold">WhatsApp</a>
+        <a href="https://wa.me/628211395050" data-wa-src="navbar_wa" target="_blank" class="block py-2 text-brand-600 font-semibold">WhatsApp</a>
       </div>
     </div>
   </nav>
@@ -301,8 +301,9 @@
     </div>
   </section>
 
-  <script src="assets/js/products.js"></script>
-  <script src="assets/js/cart.js"></script>
+<script src="assets/js/products.js"></script>
+<script src="assets/js/tracking.js"></script>
+<script src="assets/js/cart.js"></script>
   <script>
     // Render tombol filter
     const filterBar = document.getElementById('filter-bar');
@@ -424,27 +425,7 @@
       if (autoBtn) autoBtn.click();
     }
 
-    // ===== Konversi Google Ads (klik WhatsApp / Shopee) =====
-    document.addEventListener('click', (e) => {
-      const wa = e.target.closest('a[href*="wa.me"]');
-      if (wa) {
-        gtag('event', 'generate_lead', {
-          event_category: 'engagement',
-          event_label: 'wa_click',
-          non_interaction: false,
-        });
-        fbq('track', 'Lead', { content_name: 'whatsapp_click' });
-        return;
-      }
-      const shp = e.target.closest('a[href*="shopee.co.id"]');
-      if (shp) {
-        gtag('event', 'outbound_click', {
-          event_category: 'external',
-          event_label: 'shopee_click',
-          transport_type: 'beacon',
-        });
-      }
-    });
+
   </script>
 </body>
 </html>

@@ -376,7 +376,15 @@ cartSend.addEventListener('click', () => {
   a.href = 'https://wa.me/' + outlet.wa + '?text=' + encodeURIComponent(pesan);
   a.target = '_blank';
   a.rel = 'noopener';
+  a.dataset.waSkip = '1';
   document.body.appendChild(a);
+  if (window.TRACKING) {
+    window.TRACKING.trackLead({
+      source: 'keranjang_' + outlet.id,
+      value: totalSub(),
+      items: totalItem(),
+    });
+  }
   a.click();
   a.remove();
   toast('Pesanan dikirim ke WhatsApp ' + outlet.kota);
