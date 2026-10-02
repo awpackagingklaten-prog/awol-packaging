@@ -381,6 +381,7 @@ cartSend.addEventListener('click', () => {
   if (window.TRACKING) {
     window.TRACKING.trackLead({
       source: 'keranjang_' + outlet.id,
+      outlet: outlet.id,
       value: totalSub(),
       items: totalItem(),
     });
